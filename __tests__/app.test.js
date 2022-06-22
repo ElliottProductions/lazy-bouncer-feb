@@ -64,7 +64,7 @@ describe('lazy-bouncer routes', () => {
     const res = await request(app).get('/api/v1/users');
 
     expect(res.body).toEqual({
-      message: 'You must be signed in to continue',
+      message: 'You must be signed in to Kontinue',
       status: 401,
     });
   });
@@ -74,12 +74,12 @@ describe('lazy-bouncer routes', () => {
     const res = await agent.get('/api/v1/users');
 
     expect(res.body).toEqual({
-      message: 'You do not have access to view this page',
+      message: 'You do NOT have access to view this page!',
       status: 403,
     });
   });
 
-  it('should return a list of users if signed in as admin', async () => {
+  it('Should return a list of users if signed in as admin', async () => {
     const [agent, user] = await registerAndLogin({ email: 'admin' });
     const res = await agent.get('/api/v1/users');
 
